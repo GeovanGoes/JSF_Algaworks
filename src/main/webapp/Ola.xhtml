@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Olá JSF</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h1>Olá</h1>
+Nome: <h:inputText value="#{ola.nome}"/>
+		<br />
+Sobrenome: <h:inputText value="#{ola.sobrenome}"/>
+		<br />
+		<h:commandButton value="Esse e o commandButton" action="#{ola.dizerOla}"/>
+		<h:selectOneRadio id="sexo">
+			<f:selectItem itemValue="Masculino" itemLabel="Maxocaraio!"/>
+			<f:selectItem itemValue="Feminino" itemLabel="Mulécaraio!"/>			
+		</h:selectOneRadio>
+		<h:commandLink action="#{ola.dizerOla}" value="Esse é um commandLink" />
+	</h:form>
+</h:body>
+</html>

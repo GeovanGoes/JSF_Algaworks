@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8"/>
+	<title>
+		<ui:insert name="titulo">Sistema Fincaneiro</ui:insert>
+	</title>
+	<h:outputStylesheet library="css" name="bootstrap.css"/>
+	<h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+<h:body>
+	<header>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Sistema de Lançamentos</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<div id="conteudo">
+		<ui:insert name="corpo"/>
+	</div>
+	
+	<footer>
+		Sistema desenvolvido por Geovan Goes com auxílio da apostila JSF do Algaworks
+	</footer>
+
+</h:body>
+</html>
