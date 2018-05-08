@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Exemplo de soma de valores dinâmica</title>
+	<style>
+		.campo-monetario
+		{
+			width:90px; 
+			padding-left: -105px; 
+			margin-left:10px;
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<h:form>
+		<!-- removi os seguintes itens para não dar erro de compilação pra mim que não tenho o projeto inteiro. value="#{MoestBean.mlh_100_dol}"  required="#{MoestBean.testadolar()}"-->
+		<!-- Não estou usando os Ids que você colocou, caso você não os use em mais nenhum ponto do código, pode remover -->
+		<!-- Em todos os inputText coloquei o atributo styleClass para conseguir obter todos os elementos que contem uma determinada classe de estilo através do javascript-->
+		<!-- Removi a tag style que estava se repetindo com o mesmo valor e externalizei esse estilo que você pode reaproveitar através da class campo-monetario, inclusive seria bom colocar ele num arquivo separado. -->
+		<p:inputText 
+			id="mlh_100_dol" 
+			requiredMessage="Preencha U$ 100" 
+			onkeydown="mascara(this,moeda)" 
+			onblur="somarValores()"
+			styleClass="valor campo-monetario"/>
+			
+		<p:inputText 
+			id="mlh_200_dol" 
+			requiredMessage="Preencha U$ 100" 
+			onkeydown="mascara(this,moeda)" 
+			onblur="somarValores()"
+			styleClass="valor campo-monetario"/>
+			
+		<p:inputText 
+			id="mlh_300_dol" 
+			requiredMessage="Preencha U$ 100" 
+			onkeydown="mascara(this,moeda)" 
+			onblur="somarValores()"
+			styleClass="valor campo-monetario"/>
+			
+		<p:inputText 
+			id="mlh_400_dol" 
+			requiredMessage="Preencha U$ 100" 
+			onkeydown="mascara(this,moeda)" 
+			onblur="somarValores()"
+			styleClass="valor campo-monetario"/>
+			
+	</h:form>
+	
+	<!-- Coloquei um id nesse elemento pra conseguir buscar ele através do javascript -->
+	<p:outputLabel value="Total: 0,00" id="label-valor-total"/>
+
+	<!-- Importação do arquivo javascript functions.js esse arquivo deve estar em resources/js/ -->
+	<!-- Importante, coloque dessa forma... os scripts num arquivo separado, JSF tem sérios problemas com javascript direto na página. -->
+	<h:outputScript name="js/functions.js"/>
+	
+</h:body>
+</html>

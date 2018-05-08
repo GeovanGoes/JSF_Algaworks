@@ -4,14 +4,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class JpaUtil {
-	
+public class JpaUtil 
+{	
 	private static EntityManagerFactory factory;
 	
-	static {
-		factory = Persistence.createEntityManagerFactory("FinanceiroPU");
+	static 
+	{
+		factory = Persistence.createEntityManagerFactory("FinanceiroPU", new PersistenceProperties().get());
 	}
-	public static EntityManager getEntityManager(){
+	
+	public static EntityManager getEntityManager()
+	{
 		return factory.createEntityManager();
 	}
 }
