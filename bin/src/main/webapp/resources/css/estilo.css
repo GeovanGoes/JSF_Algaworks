@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+#conteudo {
+padding: 0px 8px
+}
+
+footer {
+border-top: 1px solid #ccc;
+padding: 5px 8px;
+margin-top: 20px;
+margin-bottom: 10px
+}

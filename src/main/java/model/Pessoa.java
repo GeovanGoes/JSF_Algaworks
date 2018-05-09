@@ -1,16 +1,19 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="pessoa")
-public class Pessoa implements Serializable{
+public class Pessoa implements Serializable
+{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -21,7 +24,74 @@ public class Pessoa implements Serializable{
 	@Column(length=60,nullable=false)
 	private String nome;
 	
+	@Column
+	private Date dataNascimento;
 	
+	@Column(length = 11, nullable = false)
+	private String cpf;
+	
+	@ManyToOne
+	private Estado estadoNascimento;
+	
+	@ManyToOne
+	private Cidade cidadeNascimento;
+	
+	/**
+	 * @return the dataNascimento
+	 */
+	public Date getDataNascimento()
+	{
+		return dataNascimento;
+	}
+	/**
+	 * @param dataNascimento the dataNascimento to set
+	 */
+	public void setDataNascimento(Date dataNascimento)
+	{
+		this.dataNascimento = dataNascimento;
+	}
+	/**
+	 * @return the cpf
+	 */
+	public String getCpf()
+	{
+		return cpf;
+	}
+	/**
+	 * @param cpf the cpf to set
+	 */
+	public void setCpf(String cpf)
+	{
+		this.cpf = cpf;
+	}
+	/**
+	 * @return the estadoNascimento
+	 */
+	public Estado getEstadoNascimento()
+	{
+		return estadoNascimento;
+	}
+	/**
+	 * @param estadoNascimento the estadoNascimento to set
+	 */
+	public void setEstadoNascimento(Estado estadoNascimento)
+	{
+		this.estadoNascimento = estadoNascimento;
+	}
+	/**
+	 * @return the cidadeNascimento
+	 */
+	public Cidade getCidadeNascimento()
+	{
+		return cidadeNascimento;
+	}
+	/**
+	 * @param cidadeNascimento the cidadeNascimento to set
+	 */
+	public void setCidadeNascimento(Cidade cidadeNascimento)
+	{
+		this.cidadeNascimento = cidadeNascimento;
+	}
 	public Long getId() {
 		return id;
 	}

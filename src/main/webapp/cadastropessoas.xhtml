@@ -9,26 +9,39 @@
 </h:head>
 
 <h:body>
-	<h:form>
-
+	<h:form id="frm">
 		<p:panelGrid columns="2">
 			<p:outputLabel for="nome" value="Nome: " />
-			<p:inputText id="nome" />
+			<p:inputText id="nome" value="#{formularioPessoasBean.nome}"/>
 
 			<p:outputLabel for="sobrenome" value="Sobrenome: " />
-			<p:inputText id="sobrenome" />
+			<p:inputText id="sobrenome" value="#{formularioPessoasBean.sobrenome}"/>
 
 			<p:outputLabel for="data-nascimento" value="Data de Nascimento: " />
-			<p:inputText id="data-nascimento" />
+			<p:calendar id="data-nascimento" value="#{formularioPessoasBean.data}"/>
 
 			<p:outputLabel for="cpf" value="CPF: " />
-			<p:inputText id="cpf" />
+			<p:inputMask mask="999.999.999-99" id="cpf" value="#{formularioPessoasBean.cpf}"/>
 
-			<p:outputLabel for="estado-nascimento" value="Estado de Nascimento: " />
-			<p:inputText id="estado-nascimento" />
+			<p:outputLabel for="estado-nascimento" value="Estado de Nascimento:" />
+			<p:selectOneMenu id="estado-nascimento"  value="#{formularioPessoasBean.estadoSelecionado}">
+				<p:ajax listener="#{formularioPessoasBean.onEstadoChange}" update="cidades"/>
+				<f:selectItem itemLabel="Selecione" noSelectionOption="true" itemValue=""/>
+				<f:selectItems value="#{formularioPessoasBean.estados}"/>
+				
+			</p:selectOneMenu>
 
-			<p:outputLabel for="cidade-nascimento" value="Cidade de Nascimento: " />
-			<p:inputText id="cidade-nascimento" />
+			<p:outputLabel for="cidades" value="Cidade de Nascimento: " />
+			<p:selectOneMenu id="cidades" value="#{formularioPessoasBean.cidadeSelecionada}">
+				<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+				<f:selectItems value="#{formularioPessoasBean.cidades}"/>
+			</p:selectOneMenu>
+			
+			<p:commandButton 
+				action="#{formularioPessoasBean.salvar}" 
+				value="Salvar" 
+				update="@form"
+				icon="ui-icon-disk"/>
 		</p:panelGrid>
 		
 		
