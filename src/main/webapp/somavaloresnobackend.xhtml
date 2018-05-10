@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Exemplo de soma de valores dinâmica no Bean</title>
+	<style>
+		.campo-monetario
+		{
+			width:90px; 
+			padding-left: -105px; 
+			margin-left:10px;
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:inputText 
+			id="mlh_100_dol" 
+			requiredMessage="Preencha U$ 100" 
+			onkeydown="mascara(this,moeda)" 
+			styleClass="campo-monetario"
+			value="#{somaValoresBean.valorUm}">
+			
+			<p:ajax event="blur" listener="#{somaValoresBean.soma}" update="label-valor-total"/>
+			
+		</p:inputText>
+			
+		<p:inputText 
+			id="mlh_200_dol" 
+			requiredMessage="Preencha U$ 100" 
+			onkeydown="mascara(this,moeda)" 
+			styleClass="campo-monetario"
+			value="#{somaValoresBean.valorDois}">
+			
+			<p:ajax event="blur" listener="#{somaValoresBean.soma}" update="label-valor-total"/>
+			
+		</p:inputText>
+			
+		<p:inputText 
+			id="mlh_300_dol" 
+			requiredMessage="Preencha U$ 100" 
+			onkeydown="mascara(this,moeda)" 
+			styleClass="campo-monetario"
+			value="#{somaValoresBean.valorTres}">
+			
+			<p:ajax event="blur" listener="#{somaValoresBean.soma}" update="label-valor-total"/>
+			
+		</p:inputText>
+			
+		<p:inputText 
+			id="mlh_400_dol" 
+			requiredMessage="Preencha U$ 100" 
+			onkeydown="mascara(this,moeda)" 
+			styleClass="campo-monetario"
+			value="#{somaValoresBean.valorQuatro}">
+			
+			<p:ajax event="blur" listener="#{somaValoresBean.soma}" update="label-valor-total"/>
+			
+		</p:inputText>
+	</h:form>
+	
+	<!-- Coloquei um id nesse elemento pra conseguir buscar ele através do javascript -->
+	<p:outputLabel value="#{somaValoresBean.total}" id="label-valor-total"/>
+	
+</h:body>
+</html>
