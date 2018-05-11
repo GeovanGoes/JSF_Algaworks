@@ -24,7 +24,8 @@ xmlns:p="http://primefaces.org/ui">
 			requiredMessage="Preencha U$ 100" 
 			onkeydown="mascara(this,moeda)" 
 			styleClass="campo-monetario"
-			value="#{somaValoresBean.valorUm}">
+			value="#{somaValoresBean.valorUm}"
+			>
 			
 			<p:ajax event="blur" listener="#{somaValoresBean.soma}" update="label-valor-total"/>
 			
@@ -64,8 +65,31 @@ xmlns:p="http://primefaces.org/ui">
 		</p:inputText>
 	</h:form>
 	
-	<!-- Coloquei um id nesse elemento pra conseguir buscar ele através do javascript -->
 	<p:outputLabel value="#{somaValoresBean.total}" id="label-valor-total"/>
+	
+	<script>
+		var v_obj;
+		var v_fun;
+		
+		function mascara(elemento, funcaoCallback) 
+		{
+		    v_obj = elemento
+		    v_fun = funcaoCallback
+		    setTimeout("execmascara()", 1)
+		}
+	
+		function execmascara() 
+		{
+		    v_obj.value = v_fun(v_obj.value)
+		}
+	
+		function moeda(value) 
+		{
+		    value = value.replace(/\D/g, ""); // permite digitar apenas numero
+		    value = value.replace(/(\d{1})(\d{1,2})$/, "$1,$2") // coloca virgula antes dos ultimos 2 digitos
+		    return value;
+		}
+	</script>
 	
 </h:body>
 </html>

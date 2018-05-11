@@ -6,6 +6,7 @@ package bean;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 /**
  * @author geovan.goes
@@ -13,6 +14,7 @@ import javax.faces.bean.ManagedBean;
  */
 
 @ManagedBean
+@ViewScoped
 public class SomaValoresBean implements Serializable
 {	
 	/**
@@ -20,22 +22,36 @@ public class SomaValoresBean implements Serializable
 	 */
 	private static final long serialVersionUID = 1144184491509014935L;
 	
-	private Double valorUm;
-	private Double valorDois;
-	private Double valorTres;
-	private Double valorQuatro;
+	private String valorUm = "";
+	private String valorDois  = "";
+	private String valorTres = "";
+	private String valorQuatro = "";
 	
-	private Double total;
+	private String total = "Total: 0";
 	
+	/***
+	 * 
+	 */
 	public void soma()
-	{
-		total = valorUm + valorDois + valorTres + valorQuatro;
+	{ 
+		total = "Total: " + String.valueOf(
+											obterDoubleDaString(valorUm) + 
+											obterDoubleDaString(valorDois) + 
+											obterDoubleDaString(valorTres) + 
+											obterDoubleDaString(valorQuatro)
+											);
 	}
 	
+	private Double obterDoubleDaString(String param)
+	{
+		param = param.replace(",", ".");
+		return new Double((param.isEmpty() ? "0" : param));
+	}
+		
 	/**
 	 * @return the total
 	 */
-	public Double getTotal()
+	public String getTotal()
 	{
 		return total;
 	}
@@ -43,7 +59,7 @@ public class SomaValoresBean implements Serializable
 	/**
 	 * @param total the total to set
 	 */
-	public void setTotal(Double total)
+	public void setTotal(String total)
 	{
 		this.total = total;
 	}
@@ -51,56 +67,63 @@ public class SomaValoresBean implements Serializable
 	/**
 	 * @return the valorUm
 	 */
-	public Double getValorUm()
+	public String getValorUm()
 	{
 		return valorUm;
 	}
+
 	/**
 	 * @param valorUm the valorUm to set
 	 */
-	public void setValorUm(Double valorUm)
+	public void setValorUm(String valorUm)
 	{
 		this.valorUm = valorUm;
 	}
+
 	/**
 	 * @return the valorDois
 	 */
-	public Double getValorDois()
+	public String getValorDois()
 	{
 		return valorDois;
 	}
+
 	/**
 	 * @param valorDois the valorDois to set
 	 */
-	public void setValorDois(Double valorDois)
+	public void setValorDois(String valorDois)
 	{
 		this.valorDois = valorDois;
 	}
+
 	/**
 	 * @return the valorTres
 	 */
-	public Double getValorTres()
+	public String getValorTres()
 	{
 		return valorTres;
 	}
+
 	/**
 	 * @param valorTres the valorTres to set
 	 */
-	public void setValorTres(Double valorTres)
+	public void setValorTres(String valorTres)
 	{
 		this.valorTres = valorTres;
 	}
+
 	/**
 	 * @return the valorQuatro
 	 */
-	public Double getValorQuatro()
+	public String getValorQuatro()
 	{
 		return valorQuatro;
 	}
+
 	/**
 	 * @param valorQuatro the valorQuatro to set
 	 */
-	public void setValorQuatro(Double valorQuatro)
+	public void setValorQuatro(String valorQuatro)
 	{
 		this.valorQuatro = valorQuatro;
 	}
